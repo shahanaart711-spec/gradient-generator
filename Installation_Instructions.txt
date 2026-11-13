@@ -1,0 +1,101 @@
+=====================================================================
+ LONG-TERM UNIQUE GRADIENT GENERATOR - INSTALLATION INSTRUCTIONS
+ Target: Adobe Illustrator 2025 on Windows 11
+=====================================================================
+
+CONTENTS OF THIS PACKAGE
+------------------------
+1. Long_Term_Gradient_Generator.jsx   The generator script.
+2. Installation_Instructions.txt      This file.
+3. README.txt                         Usage and technical reference.
+
+Color_History.json is NOT included: it is created automatically the
+first time the script runs, in the same folder as the .jsx file.
+
+
+INSTALLATION (Option A - run once, no install)
+----------------------------------------------
+1. Place Long_Term_Gradient_Generator.jsx in any folder where you have
+   write permission (for example:  D:\GradientTools\ ).
+   Do NOT place it in a folder that requires administrator rights,
+   because the script must be able to create its Color_History.json
+   database next to itself.
+
+2. Start Adobe Illustrator 2025.
+
+3. Choose  File > Scripts > Other Script...  (Ctrl+F12).
+
+4. Browse to Long_Term_Gradient_Generator.jsx and click Open.
+
+5. The generator window appears. Click "Generate 5 EPS Files".
+
+
+INSTALLATION (Option B - permanent install in the Scripts menu)
+---------------------------------------------------------------
+1. Close Adobe Illustrator.
+
+2. Copy Long_Term_Gradient_Generator.jsx into the Illustrator scripts
+   folder, typically:
+
+   C:\Program Files\Adobe\Adobe Illustrator 2025\Presets\en_US\Scripts\
+
+   (The "en_US" part depends on your Illustrator language.)
+
+   Windows may ask for administrator permission to copy into Program
+   Files. If it does, note step 3 below.
+
+3. IMPORTANT - history database location: the script stores
+   Color_History.json in the SAME folder as the .jsx file. If you
+   install the script into Program Files, Windows security may block
+   writing there. If that happens, either:
+   - run Illustrator as administrator once so the history file can be
+     created, then use it normally, or
+   - preferably keep the .jsx in a normal user folder (Option A) and
+     simply run it via File > Scripts > Other Script...
+
+4. Start Illustrator. The script now appears under
+   File > Scripts > Long_Term_Gradient_Generator.
+
+
+FIRST RUN
+---------
+- On the first run the script automatically creates:
+    Color_History.json          the permanent palette database
+    Output\                     the default output folder
+- Click "Generate 5 EPS Files". Five files are written to the output
+  folder as Design_0001.eps, Design_0002.eps, ... Design_0005.eps.
+- Every further run continues the numbering (Design_0006.eps, ...) and
+  never overwrites existing files.
+
+
+CHOOSING A DIFFERENT OUTPUT FOLDER
+----------------------------------
+- Click "Choose output folder..." in the script window and pick any
+  folder. Your choice is remembered for the next run (stored inside
+  Color_History.json).
+- Numbering continues from the highest Design_####.eps already present
+  in the selected folder, so existing files are never overwritten.
+
+
+UNINSTALLING
+------------
+Delete the .jsx file. If you also want to erase the permanent history,
+delete Color_History.json (and Color_History.backup.json if present)
+from the same folder.
+
+
+TROUBLESHOOTING
+---------------
+- "Failed to initialize the history database":
+  The folder containing the .jsx file is read-only. Move the .jsx to a
+  writable folder (see Option A).
+- "Cannot write history file":
+  Close the file if it is open in an editor, or check folder
+  permissions, then run the script again.
+- "Could not find 5 unique color families":
+  Extremely rare; it means the recent-history similarity filter
+  rejected many candidates in a row. Simply click Generate again.
+- A generation error in the middle of a run:
+  Files that were already exported successfully remain on disk and are
+  already recorded in the history. The failed design is not recorded.
+  Just click Generate again.
