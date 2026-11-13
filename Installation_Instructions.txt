@@ -1,0 +1,136 @@
+=====================================================================
+ PROFESSIONAL SEAMLESS PATTERN GENERATOR
+ Installation Instructions  (Adobe Illustrator 2025 - Windows 11)
+=====================================================================
+
+1. WHAT IS INCLUDED
+---------------------------------------------------------------------
+  Professional_Seamless_Pattern_Generator.jsx   The generator script
+  README.md                                     Full documentation
+  Installation_Instructions.txt                 This file
+
+  Pattern_History.json is NOT included. It is created automatically
+  the first time the script runs.
+
+2. INSTALL THE SCRIPT (WINDOWS 11)
+---------------------------------------------------------------------
+  Method A - User Scripts folder (recommended, no admin rights):
+
+    1. Open File Explorer and paste this path into the address bar:
+
+         %AppData%\Adobe\Adobe Illustrator 2025\en_US\Documents\Scripts
+         %AppData%\Adobe\Adobe Illustrator 2025\Documents\Scripts
+         %AppData%\Adobe\Adobe Illustrator 2025 x64\en_US\Documents\Scripts
+
+       (Use the first folder that exists on your machine; the exact
+       name depends on your Illustrator version and language.)
+
+    2. Copy  Professional_Seamless_Pattern_Generator.jsx  into that
+       folder.
+
+    3. Restart Illustrator if it was already running.
+
+  Method B - Presets Scripts folder (requires admin rights):
+
+    1. Navigate to:
+
+         C:\Program Files\Adobe\Adobe Illustrator 2025\Presets\en_US\Scripts
+
+    2. Copy  Professional_Seamless_Pattern_Generator.jsx  into that
+       folder (you will be asked for administrator approval).
+
+    3. Restart Illustrator if it was already running.
+
+  Method C - Run once without installing:
+
+    1. In Illustrator, choose  File > Scripts > Other Script...
+       (Ctrl+F12).
+    2. Browse to  Professional_Seamless_Pattern_Generator.jsx  and
+       click Open.
+
+3. RUN THE SCRIPT
+---------------------------------------------------------------------
+  1. In Illustrator, choose  File > Scripts >
+     Professional_Seamless_Pattern_Generator
+     (or use File > Scripts > Other Script... for a one-off run).
+
+  2. A small palette window appears with:
+       - Output folder field and Browse... button
+       - "Generate 5 EPS Patterns" button
+       - History counter and database status
+       - Status line and progress bar
+
+  3. Click Browse... and select the folder where the EPS files
+     should be written. The folder is remembered for the next run.
+
+  4. Click "Generate 5 EPS Patterns". The status line shows progress
+     for each of the 5 designs. When finished, a completion dialog
+     lists the exported files (Pattern_0001.eps ... Pattern_0005.eps,
+     continuing from the highest existing number in the folder).
+
+  5. Keep the palette window open while a batch is running. Close it
+     when you are done generating.
+
+4. WHERE THE HISTORY DATABASE LIVES
+---------------------------------------------------------------------
+  The script stores Pattern_History.json (and its automatic backup
+  Pattern_History.backup.json) in the first writable location:
+
+    1. The folder containing the .jsx file itself, if writable
+    2. Otherwise:  %USERPROFILE%\Documents
+       (i.e. C:\Users\<YourName>\Documents\Pattern_History.json)
+
+  The database is created automatically on first run and grows with
+  every successfully exported pattern. Do not delete it if you want
+  long-term duplicate prevention; deleting it simply resets history
+  (already-exported EPS files are never overwritten either way).
+
+  If the history file ever becomes corrupted, the script
+  automatically recovers from the backup, or starts a fresh database
+  if no backup exists. Existing EPS files are never touched.
+
+5. FIRST-RUN BEHAVIOR
+---------------------------------------------------------------------
+  - No source-code editing is ever required.
+  - If no output folder was previously selected, pick one with
+    Browse... (or type/paste a path into the folder field).
+  - The script creates the output folder if it does not exist.
+  - EPS files are numbered sequentially and never overwrite
+    existing files, in the same folder or across runs.
+
+6. SYSTEM REQUIREMENTS
+---------------------------------------------------------------------
+  - Adobe Illustrator 2025 (v29) on Windows 11. The script also
+    works on recent earlier versions (Illustrator 2021+), since all
+    EPS compatibility constants have fallbacks.
+  - RGB color documents are created automatically; no document needs
+    to be open before running.
+  - No plug-ins, no external libraries, no internet connection.
+
+7. TROUBLESHOOTING
+---------------------------------------------------------------------
+  - "Script does not appear in the File > Scripts menu":
+    confirm the .jsx file is directly inside the Scripts folder
+    (not in a subfolder) and restart Illustrator.
+
+  - "Cannot create output folder": choose a folder where you have
+    write permission (e.g. Documents or Desktop).
+
+  - "Error: ..." dialog during generation: previously exported EPS
+    files and the history database are always preserved; you can
+    safely click Generate again. Failed designs are skipped and
+    reported in the completion dialog notes.
+
+  - Generation is slow on the first run: Illustrator's scripting
+    engine warms up; subsequent batches are faster. Each design
+    involves building, verifying and exporting a 4000x4000 px vector
+    tile, so a batch typically takes a few minutes.
+
+  - To fully reset the generator, close Illustrator and delete
+    Pattern_History.json (and Pattern_History.backup.json) from the
+    location described in section 4. This only resets duplicate
+    prevention; it never deletes your EPS files.
+
+=====================================================================
+ End of Installation Instructions
+=====================================================================
